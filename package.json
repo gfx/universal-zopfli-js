@@ -1,0 +1,20 @@
+{
+  "name": "@gfx/zopfli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "zopfli",
+    "gzip",
+    "deflate",
+    "zlib"
+  ],
+  "author": "FUJI Goro",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^2.6.1"
+  }
+}
