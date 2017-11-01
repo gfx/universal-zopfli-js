@@ -16,5 +16,9 @@
   "license": "ISC",
   "devDependencies": {
     "typescript": "^2.6.1"
+  },
+  "dependencies": {
+    "@types/node": "^8.0.47",
+    "base64-js": "^1.2.1"
   }
 }
