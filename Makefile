@@ -1,9 +1,14 @@
 EMCC := emcc
-EMCC_OPTIMIZATION_FLAGS := -O0
+
+# specify -Oz for release
+EMCC_OPTIMIZATION_FLAGS := -O0 -s ASSERTIONS=2
 
 CC = $(EMCC)
 CCFLAGS = -s WASM=1 $(EMCC_OPTIMIZATION_FLAGS) \
 	-s NO_FILESYSTEM=1 \
+	-s ALLOW_MEMORY_GROWTH=1 \
+	-s NO_EXIT_RUNTIME=1 \
+	-s EXPORTED_FUNCTIONS='[]' \
 	--pre-js src/pre.js \
 	-W -Wall
 
@@ -26,7 +31,7 @@ dist/index.js: src/index.ts
 	node_modules/.bin/tsc
 
 .c.o:
-	$(CC) -I zopfli/src/zopfli -c $< -o $@
+	$(CC) -W -I zopfli/src/zopfli -c $< -o $@
 
 dist/libzopfli-wasm.json: dist/libzopfli.js
 	mkdir -p dist/

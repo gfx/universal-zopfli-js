@@ -17,6 +17,8 @@
   "devDependencies": {
     "@types/node": "^8.0.47",
     "ava": "^0.23.0",
+    "benchmark": "^2.1.4",
+    "node-zopfli": "^2.0.2",
     "typescript": "^2.6.1"
   },
   "dependencies": {
