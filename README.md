@@ -20,6 +20,10 @@ This library is a JavaScript binding to zopfli with WebAssembly. This might be s
 make
 ```
 
+## See Also
+
+* https://github.com/imaya/zopfli.js - The pioneer to build zopfli with emscripten
+
 ## Copyright
 
 Copyright 2017, FUJI Goro ([gfx](https://github.com/gfx)).
