@@ -8,4 +8,4 @@ services:
 before_install:
   - npm install
 
-script: make
+script: make test-with-docker

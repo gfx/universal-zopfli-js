@@ -9,6 +9,7 @@ CCFLAGS = -s WASM=1 $(EMCC_OPTIMIZATION_FLAGS) \
 	-s ALLOW_MEMORY_GROWTH=1 \
 	-s NO_EXIT_RUNTIME=1 \
 	-s EXPORTED_FUNCTIONS='[]' \
+	-s STRICT=1 \
 	--pre-js src/pre.js \
 	-W -Wall
 
@@ -17,13 +18,13 @@ OBJ_FILES = $(C_FILES:.c=.o)
 
 DOCKER_IMAGE = zopfli_js
 
-build-with-docker:
-	docker build  . -t $(DOCKER_IMAGE)
-	docker run -v "$(PWD):/src" -t $(DOCKER_IMAGE) make test
-
 test: all
 	rm -rf test/*.js test/*.js.map test/*.d.ts
 	npm test
+
+test-with-docker:
+	docker build  . -t $(DOCKER_IMAGE)
+	docker run -v "$(PWD):/src" -t $(DOCKER_IMAGE) make test
 
 all: dist/libzopfli.js dist/libzopfli-wasm.json dist/index.js
 
