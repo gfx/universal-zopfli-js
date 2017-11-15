@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tsc -p test/tsconfig.json && ava"
   },
   "keywords": [
     "zopfli",
@@ -15,10 +15,11 @@
   "author": "FUJI Goro",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^8.0.47",
+    "ava": "^0.23.0",
     "typescript": "^2.6.1"
   },
   "dependencies": {
-    "@types/node": "^8.0.47",
     "base64-js": "^1.2.1"
   }
 }
