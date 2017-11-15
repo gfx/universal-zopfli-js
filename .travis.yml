@@ -1,5 +1,11 @@
-sudo: false
+sudo: required
 language: node_js
 rvm:
   - 8
-  - 9
+services:
+  - docker
+
+before_install:
+  - npm install
+
+script: make

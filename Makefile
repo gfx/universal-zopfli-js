@@ -12,10 +12,9 @@ OBJ_FILES = $(C_FILES:.c=.o)
 
 DOCKER_IMAGE = zopfli_js
 
-# build-with-docker:
-# 	docker build  . -t $(DOCKER_IMAGE)
-# 	docker run -v "$(PWD):/src" -t $(DOCKER_IMAGE) make test
-# 	rm -rf dist
+build-with-docker:
+	docker build  . -t $(DOCKER_IMAGE)
+	docker run -v "$(PWD):/src" -t $(DOCKER_IMAGE) make test
 
 test: all
 	rm -rf test/*.js test/*.js.map test/*.d.ts
