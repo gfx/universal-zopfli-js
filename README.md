@@ -46,7 +46,7 @@ node-zopfli x 0.35 ops/sec ±14.22% (6 runs sampled)
 Fastest is node-zopfli
 ```
 
-That is, the performance of universal-zopfli is 74% of native binding node-zopfli with 1MB payload.
+That is, the performance of universal-zopfli is about 70% of native binding node-zopfli with 1MB payload.
 
 ## See Also
 
