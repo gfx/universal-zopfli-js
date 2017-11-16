@@ -1,7 +1,10 @@
 EMCC := emcc
 
 # specify -Oz for release
-EMCC_OPTIMIZATION_FLAGS := -O0 -s ASSERTIONS=2
+EMCC_OPTIMIZATION_FLAGS := -O0
+EMCC_EXTRA_SETTINGS :=  -s ASSERTIONS=2
+EMCC_RELEASE_OPTIMIZATION_FLAGS := -Oz
+EMCC_RELEASE_SETTINGS := -s ASSERTIONS=0
 
 CC = $(EMCC)
 CCFLAGS = -s WASM=1 $(EMCC_OPTIMIZATION_FLAGS) \
@@ -10,6 +13,7 @@ CCFLAGS = -s WASM=1 $(EMCC_OPTIMIZATION_FLAGS) \
 	-s NO_EXIT_RUNTIME=1 \
 	-s EXPORTED_FUNCTIONS='[]' \
 	-s STRICT=1 \
+	$(EMCC_EXTRA_SETTINGS) \
 	--pre-js src/pre.js \
 	-W -Wall
 
@@ -26,13 +30,22 @@ test-with-docker:
 	docker build  . -t $(DOCKER_IMAGE)
 	docker run -v "$(PWD):/src" -t $(DOCKER_IMAGE) make test
 
+release-dist:
+	make clean
+	make test \
+		EMCC_OPTIMIZATION_FLAGS="$(EMCC_RELEASE_OPTIMIZATION_FLAGS)" \
+		EMCC_EXTRA_SETTINGS="$(EMCC_RELEASE_SETTINGS)"
+
+benchmark: release-dist
+	node benchmark/random-bytes.js
+
 all: dist/libzopfli.js dist/libzopfli-wasm.json dist/index.js
 
 dist/index.js: src/index.ts
 	node_modules/.bin/tsc
 
 .c.o:
-	$(CC) -W -I zopfli/src/zopfli -c $< -o $@
+	$(CC) $(EMCC_OPTIMIZATION_FLAGS) -W -I zopfli/src/zopfli -c $< -o $@
 
 dist/libzopfli-wasm.json: dist/libzopfli.js
 	mkdir -p dist/
