@@ -7,6 +7,8 @@ This library is a JavaScript binding to zopfli with WebAssembly. This might be s
 
 ## Usage
 
+In TypeScript:
+
 ```typescript
 import { gzip } from "@gfx/zopfli";
 
@@ -29,8 +31,6 @@ const defaultOptions: ZopfliOptions = {
     blocksplittingmax: 15,
 };
 ```
-
-See
 
 ## Development
 
@@ -56,16 +56,16 @@ As of emscripten 1.37.22 + NodeJS 8.9.1 + macOS 10.12.6, the result is as follow
 
 ```
 ## payload size: 1
-universal-zopfli x 1,415 ops/sec ±6.41% (73 runs sampled)
-node-zopfli x 168 ops/sec ±7.12% (70 runs sampled)
-Fastest is universal-zopfli
+universal-zopfli x 106 ops/sec ±0.79% (80 runs sampled)
+node-zopfli x 201 ops/sec ±1.99% (82 runs sampled)
+Fastest is node-zopfli
 ## payload size: 1024
-universal-zopfli x 1.46 ops/sec ±10.12% (12 runs sampled)
-node-zopfli x 4.69 ops/sec ±3.34% (27 runs sampled)
+universal-zopfli x 1.37 ops/sec ±12.99% (11 runs sampled)
+node-zopfli x 4.62 ops/sec ±3.34% (27 runs sampled)
 Fastest is node-zopfli
 ## payload size: 1038336
-universal-zopfli x 0.26 ops/sec ±2.27% (6 runs sampled)
-node-zopfli x 0.35 ops/sec ±14.22% (6 runs sampled)
+universal-zopfli x 0.26 ops/sec ±6.91% (6 runs sampled)
+node-zopfli x 0.39 ops/sec ±1.35% (6 runs sampled)
 Fastest is node-zopfli
 ```
 

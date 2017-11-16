@@ -36,6 +36,12 @@ release-dist:
 		EMCC_OPTIMIZATION_FLAGS="$(EMCC_RELEASE_OPTIMIZATION_FLAGS)" \
 		EMCC_EXTRA_SETTINGS="$(EMCC_RELEASE_SETTINGS)"
 
+publish: release-dist
+	npm publish
+	git tag "v`node -pe 'require("./package.json").version'`"
+	git push origin master
+	git push --tags
+
 benchmark-with-optimization: release-dist
 	node benchmark/random-bytes.js
 
