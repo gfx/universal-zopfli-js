@@ -28,24 +28,6 @@ typedef struct
 } ZopfliJsOutput;
 
 EMSCRIPTEN_KEEPALIVE
-ZopfliFormat formatGzip()
-{
-    return ZOPFLI_FORMAT_GZIP;
-}
-
-EMSCRIPTEN_KEEPALIVE
-ZopfliFormat formatZlib()
-{
-    return ZOPFLI_FORMAT_ZLIB;
-}
-
-EMSCRIPTEN_KEEPALIVE
-ZopfliFormat formatDeflate()
-{
-    return ZOPFLI_FORMAT_DEFLATE;
-}
-
-EMSCRIPTEN_KEEPALIVE
 ZopfliJsOutput *createZopfliJsOutput()
 {
     return (ZopfliJsOutput *)calloc(1, sizeof(ZopfliJsOutput));
