@@ -5,6 +5,9 @@ gzip, deflate or zlib compression.
 
 This library is a JavaScript binding to zopfli with WebAssembly. This might be slower than C/C++ extension for zopfli, but because wasm is portable binary its installation is much easier than C/C++ extensions.
 
+## Usage
+
+TBD
 
 ## Development
 
@@ -19,6 +22,31 @@ This library is a JavaScript binding to zopfli with WebAssembly. This might be s
 ```shell-session
 make
 ```
+
+### Benchmarking
+
+```shell-session
+make benchmark-with-optimization
+```
+
+As of emscripten 1.37.22 + NodeJS 8.9.1 + macOS 10.12.6, the result is as follows:
+
+```
+## payload size: 1
+universal-zopfli x 1,415 ops/sec ±6.41% (73 runs sampled)
+node-zopfli x 168 ops/sec ±7.12% (70 runs sampled)
+Fastest is universal-zopfli
+## payload size: 1024
+universal-zopfli x 1.46 ops/sec ±10.12% (12 runs sampled)
+node-zopfli x 4.69 ops/sec ±3.34% (27 runs sampled)
+Fastest is node-zopfli
+## payload size: 1038336
+universal-zopfli x 0.26 ops/sec ±2.27% (6 runs sampled)
+node-zopfli x 0.35 ops/sec ±14.22% (6 runs sampled)
+Fastest is node-zopfli
+```
+
+That is, the performance of universal-zopfli is 74% of native binding node-zopfli with 1MB payload.
 
 ## See Also
 

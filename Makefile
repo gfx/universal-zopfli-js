@@ -36,7 +36,10 @@ release-dist:
 		EMCC_OPTIMIZATION_FLAGS="$(EMCC_RELEASE_OPTIMIZATION_FLAGS)" \
 		EMCC_EXTRA_SETTINGS="$(EMCC_RELEASE_SETTINGS)"
 
-benchmark: release-dist
+benchmark-with-optimization: release-dist
+	node benchmark/random-bytes.js
+
+benchmark-without-optimization: clean all
 	node benchmark/random-bytes.js
 
 all: dist/libzopfli.js dist/libzopfli-wasm.json dist/index.js
