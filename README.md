@@ -5,6 +5,16 @@ gzip, deflate or zlib compression.
 
 This library is a JavaScript binding to zopfli with WebAssembly. This might be slower than C/C++ extension for zopfli, but because wasm is portable binary its installation is much easier than C/C++ extensions.
 
+## Installation
+
+```shell-session
+# for npm users:
+npm install "@gfx/zopfli"
+
+# for yarnpkg users
+yarnpkg add "@gfx/zopfli"
+```
+
 ## Usage
 
 In TypeScript:
@@ -17,6 +27,8 @@ gzip(input, { numiterations: 15 }, (err, output) => {
     // output is compressed in gzip
 });
 ```
+
+Note that the `gzip` method is compatible with [node-zopfli](https://github.com/pierreinglebert/node-zopfli).
 
 ### Options
 
@@ -73,7 +85,8 @@ That is, the performance of universal-zopfli is about 70% of native binding node
 
 ## See Also
 
-* https://github.com/imaya/zopfli.js - The pioneer to build zopfli with emscripten
+* https://github.com/imaya/zopfli.js - The pioneer to build Zopfli with emscripten.
+* https://github.com/pierreinglebert/node-zopfli - A Zopfli binding to JavaScript as NodeJS C/C++ extensions. Faster but not universal.
 
 ## Copyright
 
