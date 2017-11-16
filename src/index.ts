@@ -42,12 +42,18 @@ z.onRuntimeInitialized = () => {
     queue = null;
 };
 
+function intArrayFromString(input: string): Array<number> {
+    const a = z.intArrayFromString(input);
+    a.length--; // because emscripten's intArrayFromString() adds trailing nul
+    return a;
+}
+
 function callCompress(buffer: InputType, format: ZopfliFormat, options: ZopfliOptions, cb: OnCompressComplete) {
-    const byteBuffer = typeof buffer === 'string' ? z.intArrayFromString(buffer) : buffer;
+    const byteBuffer = typeof buffer === 'string' ? intArrayFromString(buffer) : buffer;
     const bufferPtr = z.allocate(byteBuffer, 'i8', z.ALLOC_NORMAL);
 
     const output = z._createZopfliJsOutput();
-    z._compress(bufferPtr, byteBuffer.length - 1 /* nul */, output, options.numIterations, format);
+    z._compress(bufferPtr, byteBuffer.length, output, options.numIterations, format);
 
     const outputPtr = z._getBuffer(output);
     const outputSize = z._getBufferSize(output);

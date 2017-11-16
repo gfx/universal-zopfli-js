@@ -15,7 +15,7 @@ test('short string', async (t) => {
   t.is(result, s);
 });
 
-test('emojis', async (t) => {
+test('string with emojis', async (t) => {
   const s = "Hello, 👪👪👪!";
   const gz = await gzip(s, {});
   const result = (await gunzip(gz)).toString();
@@ -29,3 +29,16 @@ test('large string', async (t) => {
   t.is(result, s);
 });
 
+test('nodejs Buffer', async (t) => {
+  const s = "foo";
+  const gz = await gzip(Buffer.from(s), {});
+  const result = (await gunzip(gz)).toString();
+  t.is(result, s);
+});
+
+test('Uint8Array', async (t) => {
+  const s = "foo";
+  const gz = await gzip(new Uint8Array(Buffer.from(s)), {});
+  const result = (await gunzip(gz)).toString();
+  t.is(result, s);
+});
