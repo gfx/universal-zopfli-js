@@ -37,8 +37,9 @@ release-dist:
 		EMCC_EXTRA_SETTINGS="$(EMCC_RELEASE_SETTINGS)"
 
 publish: release-dist
+	@if [ -z "$(VERSION)" ] ; then echo "specify VERSION=major|minor|patch"; exit 1; fi
+	npm version $(VERSION)
 	npm publish
-	git tag "v`node -pe 'require("./package.json").version'`"
 	git push origin master
 	git push --tags
 
