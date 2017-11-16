@@ -1,8 +1,20 @@
 {
   "name": "@gfx/zopfli",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A zopflli binding, built as WebAssembly",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gfx/universal-zopfli-js"
+  },
+  "bugs": "https://github.com/gfx/universal-zopfli-js/issues",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">= 8"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "tsc -p test/tsconfig.json && ava"
   },
@@ -13,7 +25,7 @@
     "zlib"
   ],
   "author": "FUJI Goro",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@types/node": "^8.0.47",
     "ava": "^0.23.0",
@@ -22,6 +34,6 @@
     "typescript": "^2.6.1"
   },
   "dependencies": {
-    "base64-js": "^1.2.1"
+    "base64-js": "^1.0.0"
   }
 }
