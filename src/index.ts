@@ -23,12 +23,30 @@ export enum ZopfliFormat {
     DEFLATE,
 }
 
+// https://github.com/google/zopfli/blob/master/src/zopfli/zopfli.h
 export interface ZopfliOptions {
+    /** Whether to print output */
     verbose?: boolean;
+
+    /** Whether to print more detailed output  */
     verbose_more?: boolean;
+    /**
+        Maximum amount of times to rerun forward and backward pass to optimize LZ77
+        compression cost. Good values: 10, 15 for small files, 5 for files over
+        several MB in size or it will be too slow.
+     */
     numiterations?: number;
+    /**
+        If true, splits the data in multiple deflate blocks with optimal choice
+        for the block boundaries. Block splitting gives better compression. Default:
+        true (1).
+     */
     blocksplitting?: boolean;
-    blocksplittinglast?: boolean;
+
+    /**
+        Maximum amount of blocks to split into (0 for unlimited, but this can give
+        extreme results that hurt compression on some files). Default value: 15.
+     */
     blocksplittingmax?: number;
 }
 
@@ -37,7 +55,6 @@ const defaultOptions: ZopfliOptions = {
     verbose_more: false,
     numiterations: 15,
     blocksplitting: true,
-    blocksplittinglast: false,
     blocksplittingmax: 15,
 };
 
@@ -70,7 +87,7 @@ function callCompress(buffer: InputType, format: ZopfliFormat, options: ZopfliOp
     const byteBuffer = typeof buffer === 'string' ? intArrayFromString(buffer) : buffer;
     const bufferPtr = z.allocate(byteBuffer, 'i8', z.ALLOC_NORMAL);
 
-    const opts =  { ...defaultOptions, ... options };
+    const opts = { ...defaultOptions, ...options };
 
     const output = z._createZopfliJsOutput();
     z._compress(bufferPtr, byteBuffer.length, output,
@@ -79,7 +96,6 @@ function callCompress(buffer: InputType, format: ZopfliFormat, options: ZopfliOp
         opts.verbose_more,
         opts.numiterations,
         opts.blocksplitting,
-        opts.blocksplittinglast,
         opts.blocksplittingmax,
     );
 

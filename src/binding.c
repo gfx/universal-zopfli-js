@@ -72,7 +72,6 @@ void compress(const unsigned char *buffer,
               bool verbose_more,
               int numiterations,
               bool blocksplitting,
-              bool blocksplittinglast,
               int blocksplittingmax
 )
 {
@@ -86,7 +85,6 @@ void compress(const unsigned char *buffer,
     options.verbose_more = verbose_more;
     options.numiterations = numiterations;
     options.blocksplitting = blocksplitting;
-    options.blocksplittinglast = blocksplittinglast;
     options.blocksplittingmax = blocksplittingmax;
 
     ZopfliCompress(&options,
