@@ -16,6 +16,7 @@
 
 #include <stdlib.h>
 #include <assert.h>
+#include <stdbool.h>
 
 #include "emscripten/emscripten.h"
 #include "zopfli.h"
@@ -66,20 +67,27 @@ EMSCRIPTEN_KEEPALIVE
 void compress(const unsigned char *buffer,
               size_t bufferSize,
               ZopfliJsOutput *output,
+              ZopfliFormat zopfliFormat,
+              bool verbose,
+              bool verbose_more,
               int numiterations,
-              ZopfliFormat zopfliFormat)
+              bool blocksplitting,
+              bool blocksplittinglast,
+              int blocksplittingmax
+)
 {
-
     assert(buffer != NULL);
     assert(output != NULL);
 
     ZopfliOptions options;
     ZopfliInitOptions(&options);
 
-    if (numiterations != 0)
-    {
-        options.numiterations = numiterations;
-    }
+    options.verbose = verbose;
+    options.verbose_more = verbose_more;
+    options.numiterations = numiterations;
+    options.blocksplitting = blocksplitting;
+    options.blocksplittinglast = blocksplittinglast;
+    options.blocksplittingmax = blocksplittingmax;
 
     ZopfliCompress(&options,
                    zopfliFormat,

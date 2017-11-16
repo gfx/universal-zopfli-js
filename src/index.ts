@@ -24,8 +24,22 @@ export enum ZopfliFormat {
 }
 
 export interface ZopfliOptions {
-    numIterations: number;
+    verbose?: boolean;
+    verbose_more?: boolean;
+    numiterations?: number;
+    blocksplitting?: boolean;
+    blocksplittinglast?: boolean;
+    blocksplittingmax?: number;
 }
+
+const defaultOptions: ZopfliOptions = {
+    verbose: false,
+    verbose_more: false,
+    numiterations: 15,
+    blocksplitting: true,
+    blocksplittinglast: false,
+    blocksplittingmax: 15,
+};
 
 export type OnCompressComplete = (err: Error | null, buffer: Uint8Array) => void;
 
@@ -49,11 +63,25 @@ function intArrayFromString(input: string): Array<number> {
 }
 
 function callCompress(buffer: InputType, format: ZopfliFormat, options: ZopfliOptions, cb: OnCompressComplete) {
+    console.assert(buffer != null, "buffer must not be null");
+    console.assert(options != null, "options must not be null");
+    console.assert(cb != null, "cb must not be null");
+
     const byteBuffer = typeof buffer === 'string' ? intArrayFromString(buffer) : buffer;
     const bufferPtr = z.allocate(byteBuffer, 'i8', z.ALLOC_NORMAL);
 
+    const opts =  { ...defaultOptions, ... options };
+
     const output = z._createZopfliJsOutput();
-    z._compress(bufferPtr, byteBuffer.length, output, options.numIterations, format);
+    z._compress(bufferPtr, byteBuffer.length, output,
+        format,
+        opts.verbose,
+        opts.verbose_more,
+        opts.numiterations,
+        opts.blocksplitting,
+        opts.blocksplittinglast,
+        opts.blocksplittingmax,
+    );
 
     const outputPtr = z._getBuffer(output);
     const outputSize = z._getBufferSize(output);
@@ -62,6 +90,8 @@ function callCompress(buffer: InputType, format: ZopfliFormat, options: ZopfliOp
     z._free(outputPtr);
     z._free(output);
     z._free(bufferPtr);
+
+    // zopfli does not fail unless a violation of preconditions occurs.
     cb(null, result);
 }
 
