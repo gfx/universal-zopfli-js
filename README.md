@@ -7,7 +7,30 @@ This library is a JavaScript binding to zopfli with WebAssembly. This might be s
 
 ## Usage
 
-TBD
+```typescript
+import { gzip } from "@gfx/zopfli";
+
+const input: string;
+gzip(input, { numiterations: 15 }, (err, output) => {
+    // output is compressed in gzip
+});
+```
+
+### Options
+
+Exported as `ZopfliOptions` and its default is:
+
+```typescript
+const defaultOptions: ZopfliOptions = {
+    verbose: false,
+    verbose_more: false,
+    numiterations: 15,
+    blocksplitting: true,
+    blocksplittingmax: 15,
+};
+```
+
+See
 
 ## Development
 
