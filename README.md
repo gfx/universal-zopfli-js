@@ -87,6 +87,7 @@ That is, the performance of universal-zopfli is about 70% of native binding node
 
 * https://github.com/imaya/zopfli.js - The pioneer to build Zopfli with emscripten.
 * https://github.com/pierreinglebert/node-zopfli - A Zopfli binding to JavaScript as NodeJS C/C++ extensions. Faster but not universal.
+* https://dev.to/gfx/using-webassembly-for-a-nodejs-native-addon-dpf - my blog post that introduces this repo
 
 ## Copyright
 
