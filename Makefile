@@ -1,21 +1,18 @@
-EMCC := emcc
-
 # specify -Oz for release
-EMCC_OPTIMIZATION_FLAGS := -O0
-EMCC_EXTRA_SETTINGS :=  -s ASSERTIONS=2
-EMCC_RELEASE_OPTIMIZATION_FLAGS := -Oz -DNDEBUG
-EMCC_RELEASE_SETTINGS := -s ASSERTIONS=0
+EMCC_OPTIMIZATION_FLAGS := -O0  -s ASSERTIONS=2
+EMCC_RELEASE_OPTIMIZATION_FLAGS := -Oz -DNDEBUG -s ASSERTIONS=0
 
-CC = $(EMCC)
-CCFLAGS = -s WASM=1 $(EMCC_OPTIMIZATION_FLAGS) \
+CC := emcc
+CCFLAGS = -s WASM=1 \
+	$(EMCC_OPTIMIZATION_FLAGS) \
 	-s NO_FILESYSTEM=1 \
 	-s ALLOW_MEMORY_GROWTH=1 \
 	-s NO_EXIT_RUNTIME=1 \
 	-s EXPORTED_FUNCTIONS='[]' \
 	-s STRICT=1 \
-	$(EMCC_EXTRA_SETTINGS) \
 	--pre-js src/pre.js \
-	-W -Wall
+	-W -Wextra -Wall -Wno-unused-function
+
 
 C_FILES = $(wildcard zopfli/src/zopfli/*.c)  $(wildcard src/*.c)
 OBJ_FILES = $(C_FILES:.c=.o)
@@ -33,8 +30,7 @@ test-with-docker:
 release-dist:
 	make clean
 	make test \
-		EMCC_OPTIMIZATION_FLAGS="$(EMCC_RELEASE_OPTIMIZATION_FLAGS)" \
-		EMCC_EXTRA_SETTINGS="$(EMCC_RELEASE_SETTINGS)"
+		EMCC_OPTIMIZATION_FLAGS="$(EMCC_RELEASE_OPTIMIZATION_FLAGS)"
 
 publish: release-dist
 	@if [ -z "$(VERSION)" ] ; then echo "specify VERSION=major|minor|patch"; exit 1; fi
@@ -55,7 +51,7 @@ dist/index.js: src/index.ts
 	node_modules/.bin/tsc
 
 .c.o:
-	$(CC) $(EMCC_OPTIMIZATION_FLAGS) -W -I zopfli/src/zopfli -c $< -o $@
+	$(CC) $(CCFLAGS) -I zopfli/src/zopfli -c $< -o $@
 
 dist/libzopfli-wasm.json: dist/libzopfli.js
 	mkdir -p dist/
