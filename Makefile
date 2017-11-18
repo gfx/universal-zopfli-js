@@ -1,3 +1,18 @@
+# <copied from="zopfli/Makefile">
+ZOPFLILIB_SRC = src/zopfli/blocksplitter.c src/zopfli/cache.c\
+                src/zopfli/deflate.c src/zopfli/gzip_container.c\
+                src/zopfli/hash.c src/zopfli/katajainen.c\
+                src/zopfli/lz77.c src/zopfli/squeeze.c\
+                src/zopfli/tree.c src/zopfli/util.c\
+                src/zopfli/zlib_container.c src/zopfli/zopfli_lib.c
+ZOPFLILIB_OBJ := $(patsubst src/zopfli/%.c,%.o,$(ZOPFLILIB_SRC))
+ZOPFLIBIN_SRC := src/zopfli/zopfli_bin.c
+LODEPNG_SRC := src/zopflipng/lodepng/lodepng.cpp src/zopflipng/lodepng/lodepng_util.cpp
+ZOPFLIPNGLIB_SRC := src/zopflipng/zopflipng_lib.cc
+ZOPFLIPNGBIN_SRC := src/zopflipng/zopflipng_bin.cc
+# </copied>
+
+
 # specify -Oz for release
 EMCC_OPTIMIZATION_FLAGS := -O0  -s ASSERTIONS=2
 EMCC_RELEASE_OPTIMIZATION_FLAGS := -Oz -DNDEBUG -s ASSERTIONS=0
@@ -14,8 +29,8 @@ CCFLAGS = -s WASM=1 \
 	-W -Wextra -Wall -Wno-unused-function
 
 
-C_FILES = $(wildcard zopfli/src/zopfli/*.c)  $(wildcard src/*.c)
-OBJ_FILES = $(C_FILES:.c=.o)
+C_FILES = $(patsubst %,zopfli/%,$(ZOPFLILIB_SRC)) $(wildcard src/*.c)
+OBJ_FILES = $(C_FILES:.c=.o) $(CPP_FILES:.cpp=.o)
 
 DOCKER_IMAGE = zopfli_js
 
@@ -52,6 +67,9 @@ dist/index.js: src/index.ts
 
 .c.o:
 	$(CC) $(CCFLAGS) -I zopfli/src/zopfli -c $< -o $@
+
+.cpp.o:
+	$(CC) $(CCFLAGS) -std=c++14 -I zopfli/src/zopfli -c $< -o $@
 
 dist/libzopfli-wasm.json: dist/libzopfli.js
 	mkdir -p dist/
