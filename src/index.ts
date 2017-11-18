@@ -135,3 +135,21 @@ export function zlib(buffer: InputType, options: ZopfliOptions, cb: OnCompressCo
 export function deflate(buffer: InputType, options: ZopfliOptions, cb: OnCompressComplete) {
     compress(buffer, ZopfliFormat.DEFLATE, options, cb);
 }
+
+function promisify(f: (buffer: InputType, options: ZopfliOptions, cb: OnCompressComplete) => void) {
+    return (buffer: InputType, options: ZopfliOptions) => {
+        return new Promise<Uint8Array>((resolve, reject) => {
+            f(buffer, options, (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+    };
+}
+
+export const gzipAsync = promisify(gzip);
+export const zlibAsync = promisify(zlib);
+export const deflateAsync = promisify(deflate);

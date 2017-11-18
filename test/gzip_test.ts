@@ -3,9 +3,8 @@ import * as util from 'util';
 import * as fs from 'fs';
 
 import test from 'ava';
-import * as zopfli from '../dist';
+import { gzipAsync as gzip } from '../dist';
 
-const gzip = util.promisify(zopfli.gzip) as any;
 const gunzip = util.promisify(zlib.gunzip) as any;
 
 test('short string', async (t) => {
