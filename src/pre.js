@@ -1,5 +1,5 @@
 /**
-    Copyright 2017, FUJI Goro ([gfx](https://github.com/gfx)).
+    Copyright 2017, FUJI Goro (gfx).
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

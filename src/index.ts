@@ -1,5 +1,5 @@
 /**
-    Copyright 2017, FUJI Goro ([gfx](https://github.com/gfx)).
+    Copyright 2017, FUJI Goro (gfx).
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -63,7 +63,6 @@ export type OnCompressComplete = (err: Error | null, buffer: Uint8Array) => void
 export type InputType = Uint8Array | Array<number> | string;
 
 type Task = () => void;
-
 let queue: Array<Task> | null = new Array<Task>();
 
 z.onRuntimeInitialized = () => {
@@ -73,18 +72,22 @@ z.onRuntimeInitialized = () => {
     queue = null;
 };
 
-function intArrayFromString(input: string): Array<number> {
-    const a = z.intArrayFromString(input);
-    a.length--; // because emscripten's intArrayFromString() adds trailing nul
-    return a;
+function ensureByteBuffer(input: InputType): Array<number> | Uint8Array {
+    if (typeof input === 'string') {
+        const a = z.intArrayFromString(input);
+        a.length--; // because emscripten's intArrayFromString() adds trailing nul
+        return a;
+    } else {
+        return input;
+    }
 }
 
-function callCompress(buffer: InputType, format: ZopfliFormat, options: ZopfliOptions, cb: OnCompressComplete) {
-    console.assert(buffer != null, "buffer must not be null");
+function callCompress(input: InputType, format: ZopfliFormat, options: ZopfliOptions, cb: OnCompressComplete) {
+    console.assert(input != null, "buffer must not be null");
     console.assert(options != null, "options must not be null");
     console.assert(cb != null, "cb must not be null");
 
-    const byteBuffer = typeof buffer === 'string' ? intArrayFromString(buffer) : buffer;
+    const byteBuffer = ensureByteBuffer(input);
     const bufferPtr = z.allocate(byteBuffer, 'i8', z.ALLOC_NORMAL);
 
     const opts = { ...defaultOptions, ...options };
