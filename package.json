@@ -1,7 +1,7 @@
 {
   "name": "@gfx/zopfli",
   "version": "1.0.3",
-  "description": "A zopflli binding, built as WebAssembly",
+  "description": "A Zopflli binding for JavaScript, built into WebAssembly",
   "repository": {
     "type": "git",
     "url": "https://github.com/gfx/universal-zopfli-js"
@@ -22,7 +22,9 @@
     "zopfli",
     "gzip",
     "deflate",
-    "zlib"
+    "zlib",
+    "wasm",
+    "webassembly"
   ],
   "author": "FUJI Goro",
   "license": "Apache-2.0",
