@@ -105,3 +105,5 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
+And it links to [google/zopfli](https://github.com/google/zopfli) statically,
+which is also licensed by Google under Apache 2.0 License.
