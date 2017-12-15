@@ -37,7 +37,8 @@ DOCKER_IMAGE = zopfli_js
 
 test: all
 	rm -rf test/*.js test/*.js.map test/*.d.ts
-	npm test
+	npx tsc -p test/tsconfig.json
+	npx ava
 
 test-with-docker:
 	docker build  . -t $(DOCKER_IMAGE)

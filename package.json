@@ -1,7 +1,7 @@
 {
   "name": "@gfx/zopfli",
   "version": "1.0.4",
-  "description": "A Zopflli binding for JavaScript, built into WebAssembly",
+  "description": "A Zopflli binding in universal JavaScript, built into WebAssembly",
   "repository": {
     "type": "git",
     "url": "https://github.com/gfx/universal-zopfli-js"
@@ -16,7 +16,7 @@
     "dist"
   ],
   "scripts": {
-    "test": "tsc -p test/tsconfig.json && ava"
+    "test": "make test"
   },
   "keywords": [
     "zopfli",
@@ -24,12 +24,13 @@
     "deflate",
     "zlib",
     "wasm",
-    "webassembly"
+    "webassembly",
+    "universal"
   ],
   "author": "FUJI Goro",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@types/node": "^8.0.47",
+    "@types/node": ">= 8.0",
     "ava": "^0.23.0",
     "benchmark": "^2.1.4",
     "node-zopfli": "^2.0.2",
