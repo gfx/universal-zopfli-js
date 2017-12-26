@@ -28,6 +28,12 @@ typedef struct
 } ZopfliJsOutput;
 
 EMSCRIPTEN_KEEPALIVE
+deallocate(void *ptr) {
+    assert(ptr != NULL);
+    free(ptr);
+}
+
+EMSCRIPTEN_KEEPALIVE
 ZopfliJsOutput *createZopfliJsOutput()
 {
     return (ZopfliJsOutput *)calloc(1, sizeof(ZopfliJsOutput));
