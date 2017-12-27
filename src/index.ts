@@ -17,7 +17,7 @@
 
 const z = require("./libzopfli");
 
-enum ZopfliFormat {
+const enum ZopfliFormat {
   GZIP,
   ZLIB,
   DEFLATE,
