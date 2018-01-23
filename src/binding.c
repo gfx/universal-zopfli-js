@@ -28,7 +28,7 @@ typedef struct
 } ZopfliJsOutput;
 
 EMSCRIPTEN_KEEPALIVE
-deallocate(void *ptr) {
+void deallocate(void *ptr) {
     assert(ptr != NULL);
     free(ptr);
 }
