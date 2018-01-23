@@ -1,6 +1,6 @@
 {
   "name": "@gfx/zopfli",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A Zopflli binding in universal JavaScript, built into WebAssembly",
   "repository": {
     "type": "git",
