@@ -64,20 +64,20 @@ make
 make benchmark-with-optimization
 ```
 
-As of emscripten 1.37.22 + NodeJS 8.9.1 + macOS 10.12.6, the result is as follows:
+As of emscripten 1.37.28 + NodeJS 9.4.0 + macOS 10.12.6, the result is as follows:
 
 ```
 ## payload size: 1
-universal-zopfli x 106 ops/sec ±0.79% (80 runs sampled)
-node-zopfli x 201 ops/sec ±1.99% (82 runs sampled)
+universal-zopfli x 94.09 ops/sec ±5.51% (71 runs sampled)
+node-zopfli x 196 ops/sec ±4.22% (81 runs sampled)
 Fastest is node-zopfli
 ## payload size: 1024
-universal-zopfli x 1.37 ops/sec ±12.99% (11 runs sampled)
-node-zopfli x 4.62 ops/sec ±3.34% (27 runs sampled)
+universal-zopfli x 1.68 ops/sec ±1.35% (13 runs sampled)
+node-zopfli x 5.15 ops/sec ±0.69% (29 runs sampled)
 Fastest is node-zopfli
 ## payload size: 1038336
-universal-zopfli x 0.26 ops/sec ±6.91% (6 runs sampled)
-node-zopfli x 0.39 ops/sec ±1.35% (6 runs sampled)
+universal-zopfli x 0.29 ops/sec ±2.75% (6 runs sampled)
+node-zopfli x 0.39 ops/sec ±2.34% (6 runs sampled)
 Fastest is node-zopfli
 ```
 
