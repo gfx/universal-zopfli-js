@@ -31,7 +31,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/node": ">= 8.0",
-    "ava": "^0.23.0",
+    "ava": "^0.25.0",
     "benchmark": "^2.1.4",
     "node-zopfli": "^2.0.2",
     "typescript": "^2.6.1"
