@@ -1,8 +1,9 @@
 {
   "name": "@gfx/zopfli",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A Zopflli binding in universal JavaScript, built into WebAssembly",
-  "repository": { "type": "git",
+  "repository": {
+    "type": "git",
     "url": "https://github.com/gfx/universal-zopfli-js"
   },
   "bugs": "https://github.com/gfx/universal-zopfli-js/issues",
