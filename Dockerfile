@@ -1,4 +1,4 @@
-FROM apiaryio/emcc:1.37
+FROM apiaryio/emcc:1.38
 
 VOLUME ["/src"]
 WORKDIR "/src"
