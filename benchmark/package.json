@@ -1,0 +1,16 @@
+{
+  "name": "universal-zopfli-benchmark",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "random-bytes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+      "benchmark": "*",
+      "node-zopfli": "*"
+  }
+}
