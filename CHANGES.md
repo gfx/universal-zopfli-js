@@ -1,6 +1,13 @@
 
 # The Reivision History of Universal Zopfli
 
+## v1.0.9 2018/09/11
+
+https://github.com/gfx/universal-zopfli-js/compare/v1.0.8...v1.0.9
+
+* Ship with Zopfli v1.0.2 (but no code change from the previous, untagged rev.)
+* Build with Emscripten v1.38.12
+
 ## v1.0.8 2018/04/27
 
 https://github.com/gfx/universal-zopfli-js/compare/v1.0.7...v1.0.8
