@@ -46,8 +46,7 @@ const defaultOptions: ZopfliOptions = {
 
 ### Using Zopfli in Webpack CompressionPlugin
 
-You can pass the `gzip` function to [CompressionPlugin]()
-https://github.com/webpack-contrib/compression-webpack-plugin) directly:
+You can pass the `gzip` function to [CompressionPlugin](https://github.com/webpack-contrib/compression-webpack-plugin) directly:
 
 ```js
 // in webpack.config.js
