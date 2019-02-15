@@ -48,7 +48,6 @@ const defaultOptions: ZopfliOptions = {
 
 There are versions that returns promises:
 
-```
 ```typescript
 // These functions return `Promise<T>` for async/await.
 import { gzipAsync, zlibAsync, deflateAsync } from "@gfx/zopfli";
