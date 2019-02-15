@@ -60,7 +60,9 @@ const defaultOptions: ZopfliOptions = {
 
 export type OnCompressComplete = (err: Error | null, buffer: Uint8Array) => void;
 
-export type InputType = Uint8Array | Array<number> | string;
+type BufferType = Readonly<Uint8Array> | ReadonlyArray<number>;
+
+export type InputType = BufferType | string;
 
 type Task = () => void;
 let queue: Array<Task> | null = new Array<Task>();
@@ -72,7 +74,7 @@ z.onRuntimeInitialized = () => {
   queue = null;
 };
 
-function ensureByteBuffer(input: InputType): Array<number> | Uint8Array {
+function ensureByteBuffer(input: InputType): BufferType {
   if (typeof input === 'string') {
     const a = z.intArrayFromString(input);
     a.length--; // because emscripten's intArrayFromString() adds trailing nul
