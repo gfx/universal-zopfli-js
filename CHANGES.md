@@ -3,7 +3,7 @@
 
 ## v1.0.11 2019/02/15
 
-https://github.com/gfx/universal-zopfli-js/compare/v1.0.9...v1.0.10
+https://github.com/gfx/universal-zopfli-js/compare/v1.0.10...v1.0.11
 
 * [.d.ts] InputType now accept `Readonly<Uint32Array>` and `ReadonlyArray<number>` ([#11](https://github.com/gfx/universal-zopfli-js/pull/11))
 * Build with mscripten v1.38.25
