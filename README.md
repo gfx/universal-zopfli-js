@@ -44,7 +44,7 @@ const defaultOptions: ZopfliOptions = {
 };
 ```
 
-### Using with promises for async/await
+### Using Zopfli with promises for async/await
 
 There are versions that returns promises:
 
