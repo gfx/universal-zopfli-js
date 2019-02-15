@@ -51,7 +51,7 @@ release-dist:
 
 publish: release-dist
 	@if [ -z "$(VERSION)" ] ; then echo "specify VERSION=major|minor|patch"; exit 1; fi
-	npm version $(VERSION)
+	npm version --allow-same-version $(VERSION)
 	npm publish
 	git push origin master
 	git push --tags
