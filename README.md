@@ -20,7 +20,7 @@ yarnpkg add "@gfx/zopfli"
 In TypeScript:
 
 ```typescript
-import { gzip } from "@gfx/zopfli";
+import { gzip, zlib, deflate } from "@gfx/zopfli";
 
 const input: string;
 gzip(input, { numiterations: 15 }, (err, output) => {
@@ -42,6 +42,16 @@ const defaultOptions: ZopfliOptions = {
     blocksplitting: true,
     blocksplittingmax: 15,
 };
+```
+
+### Using with promises for async/await
+
+There are versions that returns promises:
+
+```
+```typescript
+// These functions return `Promise<T>` for async/await.
+import { gzipAsync, zlibAsync, deflateAsync } from "@gfx/zopfli";
 ```
 
 ### Using Zopfli in Webpack CompressionPlugin
