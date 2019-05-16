@@ -92,24 +92,24 @@ make
 make benchmark-with-optimization
 ```
 
-As of emscripten 1.37.28 + NodeJS 9.4.0 + macOS 10.12.6, the result is as follows:
+As of emscripten 1.38.31 + NodeJS v10.15.3 + macOS 10.14.4, the result is as follows:
 
 ```
 ## payload size: 1
-universal-zopfli x 94.09 ops/sec ±5.51% (71 runs sampled)
-node-zopfli x 196 ops/sec ±4.22% (81 runs sampled)
-Fastest is node-zopfli
+universal-zopfli x 203 ops/sec ±0.78% (82 runs sampled)
+node-zopfli x 197 ops/sec ±7.45% (80 runs sampled)
+Fastest is universal-zopfli
 ## payload size: 1024
-universal-zopfli x 1.68 ops/sec ±1.35% (13 runs sampled)
-node-zopfli x 5.15 ops/sec ±0.69% (29 runs sampled)
+universal-zopfli x 1.66 ops/sec ±14.36% (13 runs sampled)
+node-zopfli x 4.82 ops/sec ±2.69% (28 runs sampled)
 Fastest is node-zopfli
 ## payload size: 1038336
-universal-zopfli x 0.29 ops/sec ±2.75% (6 runs sampled)
-node-zopfli x 0.39 ops/sec ±2.34% (6 runs sampled)
+universal-zopfli x 0.30 ops/sec ±8.02% (6 runs sampled)
+node-zopfli x 0.40 ops/sec ±7.11% (6 runs sampled)
 Fastest is node-zopfli
 ```
 
-That is, the performance of universal-zopfli is about 70% of native binding node-zopfli with 1MB payload.
+That is, the performance of universal-zopfli is about 50%~75% of native binding node-zopfli with 1KiB~1MiB payload.
 
 ## See Also
 

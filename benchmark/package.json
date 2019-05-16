@@ -10,7 +10,7 @@
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
-      "benchmark": "*",
-      "node-zopfli": "*"
+    "benchmark": "*",
+    "node-zopfli": "*"
   }
 }
