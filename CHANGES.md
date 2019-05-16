@@ -1,6 +1,14 @@
 
 # The Reivision History of Universal Zopfli
 
+## v1.0.12 2019/05/16
+
+https://github.com/gfx/universal-zopfli-js/compare/v1.0.11...v1.0.12
+
+* Use emcc optimization of `-O3` instead of `-Oz` in release build
+  * https://emscripten.org/docs/tools_reference/emcc.html
+* Build with Emscripten v1.38.31
+
 ## v1.0.11 2019/02/15
 
 https://github.com/gfx/universal-zopfli-js/compare/v1.0.10...v1.0.11
