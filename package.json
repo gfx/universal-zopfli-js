@@ -9,6 +9,7 @@
   "bugs": "https://github.com/gfx/universal-zopfli-js/issues",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "sideEffects": false,
   "engines": {
     "node": ">= 8"
   },
