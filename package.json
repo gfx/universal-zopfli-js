@@ -30,6 +30,7 @@
   "author": "FUJI Goro",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@types/base64-js": "^1.2.5",
     "@types/node": "^10.14.6",
     "ava": "^1.4.1",
     "typescript": "^3.4.5"
