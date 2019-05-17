@@ -107,7 +107,7 @@ function callCompress(input: InputType, format: ZopfliFormat, options: ZopfliOpt
   const outputPtr = z._getBuffer(output);
   const outputSize = z._getBufferSize(output);
 
-  const result = new Uint8Array(z.HEAP8.subarray(outputPtr, outputPtr + outputSize));
+  const result = z.HEAPU8.slice(outputPtr, outputPtr + outputSize);
   z._deallocate(outputPtr);
   z._deallocate(output);
   z._deallocate(bufferPtr);
