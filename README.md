@@ -3,7 +3,7 @@
 [google/zopfli](https://github.com/google/zopfli) is a compression library to perform
 gzip, deflate or zlib compression.
 
-This library is a JavaScript binding to zopfli with WebAssembly. This might be slower than C/C++ extension for zopfli, but because wasm is portable binary its installation is much easier than C/C++ extensions.
+This library is a JavaScript binding to zopfli with WebAssembly. This is slower than native extensions for zopfli, but because wasm is a portable binary format, its installation is much easier than native extensions.
 
 ## Installation
 
@@ -46,7 +46,7 @@ const defaultOptions: ZopfliOptions = {
 
 ### Using Zopfli with promises for async/await
 
-There are versions that returns promises:
+There are "async"-suffixed versions that returns promises:
 
 ```typescript
 // These functions return `Promise<T>` for async/await.
