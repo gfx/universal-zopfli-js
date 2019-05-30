@@ -6,7 +6,7 @@ import base64 from 'base64-js'
 import test from 'ava';
 import { gzipAsync as gzip, deflateAsync, zlibAsync } from '../dist';
 
-const gunzip = util.promisify(zlib.gunzip);
+const gunzip = util.promisify<zlib.InputType, Uint8Array>(zlib.gunzip);
 
 test('gzip, compared with `zopfli --gzip`', async (t) => {
   const s = "foo";
