@@ -1,4 +1,4 @@
-# Universal Zopfli [![Build Status](https://travis-ci.org/gfx/universal-zopfli-js.svg?branch=master)](https://travis-ci.org/gfx/universal-zopfli-js)
+# Universal Zopfli ![npm version](https://img.shields.io/npm/v/@gfx/zopfli.svg) [![Build Status](https://travis-ci.org/gfx/universal-zopfli-js.svg?branch=master)](https://travis-ci.org/gfx/universal-zopfli-js)
 
 [google/zopfli](https://github.com/google/zopfli) is a compression library to perform
 gzip, deflate or zlib compression.
