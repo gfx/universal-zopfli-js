@@ -46,7 +46,7 @@ const defaultOptions: ZopfliOptions = {
 
 ### Using Zopfli with promises for async/await
 
-There are "async"-suffixed versions that returns promises:
+There are "async"-suffixed versions that return promises:
 
 ```typescript
 // These functions return `Promise<T>` for async/await.
