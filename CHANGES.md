@@ -1,9 +1,16 @@
 
 # The Reivision History of Universal Zopfli
 
+## v1.0.14 2019/07/06
+
+https://github.com/gfx/universal-zopfli-js/compare/v1.0.13...v1.0.14
+
+* Build with Emscripten v1.38.37 with the LLVM backend
+  * cf. [Emscripten and the LLVM WebAssembly backend · V8](https://v8.dev/blog/emscripten-llvm-wasm)
+
 ## v1.0.13 2019/05/27
 
-https://github.com/gfx/universal-zopfli-js/compare/v1.0.11...v1.0.12
+https://github.com/gfx/universal-zopfli-js/compare/v1.0.12...v1.0.13
 
 * Build with Emscripten v1.38.32
 
