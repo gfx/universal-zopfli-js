@@ -1,6 +1,12 @@
 
 # The Reivision History of Universal Zopfli
 
+## v1.0.15 2020/07/30
+
+https://github.com/gfx/universal-zopfli-js/compare/v1.0.14...v1.0.15
+
+* Build with Emscripten v1.39.12
+
 ## v1.0.14 2019/07/06
 
 https://github.com/gfx/universal-zopfli-js/compare/v1.0.13...v1.0.14
