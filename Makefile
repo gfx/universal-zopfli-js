@@ -23,7 +23,7 @@ CCFLAGS = -s WASM=1 \
 	-s NO_FILESYSTEM=1 \
 	-s ALLOW_MEMORY_GROWTH=1 \
 	-s NO_EXIT_RUNTIME=1 \
-	-s EXPORTED_FUNCTIONS='[]' \
+	-s EXPORTED_FUNCTIONS='["_malloc"]' \
 	-s STRICT=1 \
 	-s EXTRA_EXPORTED_RUNTIME_METHODS='["allocate","intArrayFromString","ALLOC_NORMAL"]' \
 	--pre-js src/pre.js \
