@@ -90,7 +90,7 @@ function callCompress(input: InputType, format: ZopfliFormat, options: ZopfliOpt
   console.assert(cb != null, "cb must not be null");
 
   const byteBuffer = ensureByteBuffer(input);
-  const bufferPtr = z.allocate(byteBuffer, 'i8', z.ALLOC_NORMAL);
+  const bufferPtr = z.allocate(byteBuffer, z.ALLOC_NORMAL);
 
   const opts = { ...defaultOptions, ...options };
 
